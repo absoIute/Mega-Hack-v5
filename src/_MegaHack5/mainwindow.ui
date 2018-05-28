@@ -89,7 +89,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="otherTab">
        <attribute name="title">
@@ -506,6 +506,20 @@
             </property>
             <property name="maximum">
              <double>2147483647.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="gamemodePushButton">
+            <property name="text">
+             <string>Gamemode</string>
             </property>
            </widget>
           </item>

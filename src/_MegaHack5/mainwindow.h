@@ -112,6 +112,8 @@ private slots:
 
     void on_searchSetValuePushButton_clicked();
 
+    void on_gamemodePushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 

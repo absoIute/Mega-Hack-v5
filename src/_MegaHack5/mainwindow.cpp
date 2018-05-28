@@ -94,7 +94,7 @@ void MainWindow::refresh()
 
     this->ui->pidLabel->setText(tr("PID:%0").arg(this->gmd.GetPID()));
 
-    size_t hacks = 16; //count of hard-coded hacks
+    size_t hacks = 17; //count of hard-coded hacks
     for (auto it = this->hacks.begin(); it != this->hacks.end(); ++it) hacks += it->size();
     for (auto it = this->sets.begin(); it != this->sets.end(); ++it)
     {
@@ -576,8 +576,8 @@ void MainWindow::on_iconStealerPushButton_clicked()
     {
         for (auto i = 0; i < 9; ++i)
         {
-            int val = this->gmd.Read<int>(this->gmd.GetPointerAddress({0x3222C8, 0x1DC, 0x10, offsets[i]}, "GeometryDash.exe"));
-            uint32_t addr = this->gmd.GetPointerAddress({0x3222D0, 0x1E8 + static_cast<uint32_t>(0xC * i)}, "GeometryDash.exe");
+            int val = this->gmd.Read<int>(this->gmd.GetPointerAddress({0x3222C8, 0x1DC, 0x10, offsets[i]}, GAME_NAME));
+            uint32_t addr = this->gmd.GetPointerAddress({0x3222D0, 0x1E8 + static_cast<uint32_t>(0xC * i)}, GAME_NAME);
             this->gmd.Write(addr, val);
             this->gmd.Write(addr + 4, 0);
         }
@@ -590,6 +590,23 @@ void MainWindow::on_accountUnlinkerPushButton_clicked()
     if (QMessageBox::Yes == QMessageBox::question(this, "Account Unlinker", "This will log you, but no data will be lost. Continue?"))
         this->gmd.Write(this->gmd.GetPointerAddress({0x3222D8, 0x120}, "GeometryDash.exe"), 0);
 }
+
+void MainWindow::on_gamemodePushButton_clicked()
+{
+    static const QStringList gamemode = {"Cube", "Ship", "UFO", "Ball", "Wave", "Robot", "Spider"};
+
+    bool ok;
+    QString res = QInputDialog::getItem(this, "Gamemode", "Pick a new gamemode", gamemode, 0, false, &ok, Qt::WindowCloseButtonHint);
+    if (ok)
+    {
+        uint32_t addr = this->gmd.GetPointerAddress({0x3222D0, 0x164, 0x224, 0x638}, GAME_NAME);
+        this->gmd.Write(addr, "\x00\x00\x00\x00\x00\x00", 6);
+        int choice = gamemode.indexOf(res);
+        if (choice)
+            this->gmd.Write(addr + choice - 1, '\x01');
+    }
+}
+
 
 /* -------------------------------- CREATOR -------------------------------- */
 
