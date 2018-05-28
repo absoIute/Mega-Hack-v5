@@ -1,0 +1,249 @@
+{
+  "hacks": [
+    {
+	  "name": "NoClip",
+	  "desc": "Makes the player invincible.",
+	  "opcodes": [
+	    {"addr": "0x20A1E5", "on": "E9 D0 06 00 00 90", "off": "0F 85 CF 06 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "NoSpikes",
+	  "desc": "Ignores spike objects.",
+	  "opcodes": [
+	    {"addr": "0x205347", "on": "75", "off": "74"}
+	  ]
+	},
+	
+	{
+	  "name": "NoHitbox",
+	  "desc": "Disables all object hitboxes. Special objects are disabled.",
+	  "opcodes": [
+	    {"addr": "0x20456D", "on": "B8 07 00 00 00 90", "off": "8B 83 00 03 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "NoSolids",
+	  "desc": "Disables most solid hitboxes. Special objects still work.",
+	  "opcodes": [
+	    {"addr": "0x20456D", "on": "B8 14 00 00 00 90", "off": "8B 83 00 03 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Force Block Type",
+	  "desc": "Treats all objects as if they were blocks.",
+	  "opcodes": [
+	    {"addr": "0x20456D", "on": "31 C0 83 7B 34 00 BA 07 00 00 00 0F 44 C2 90", "off": "8B 83 00 03 00 00 83 F8 07 0F 84 7F 0A 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Everything Hurts",
+	  "desc": "Owie.",
+	  "opcodes": [
+	    {"addr": "0x20456D", "on": "B8 02 00 00 00 90", "off": "8B 83 00 03 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Freeze Player",
+	  "desc": "Freezes player movement.",
+	  "opcodes": [
+	    {"addr": "0x203519", "on": "90 90 90", "off": "50 FF D6"}
+	  ]
+	},
+	
+	{
+	  "name": "Jump Hack",
+	  "desc": "Allows for jumping in mid-air.",
+	  "opcodes": [
+	    {"addr": "0x1E9141", "on": "01", "off": "00"},
+		{"addr": "0x1E9498", "on": "01", "off": "00"}
+	  ]
+	},
+	
+	{
+	  "name": "Force Trail State",
+	  "desc": "Sets the trail to either always on or always off.",
+	  "tristate": true,
+	  "opcodes": [
+	    {"addr": "0xAEDCC", "lib": "libcocos2d.dll", "on": "90 90 90 90 90 90", "tri": "E9 69 02 00 00 90", "off": "0F 84 68 02 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Inversed Trail",
+	  "desc": "Inverses the trail state.",
+	  "opcodes": [
+	    {"addr": "0xAEDCC", "lib": "libcocos2d.dll", "on": "0F 85 68 02 00 00", "off": "0F 84 68 02 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Hide Attempts",
+	  "desc": "Hides the attempt count in-game.",
+	  "opcodes": [
+	    {"addr": "0x2D83B8", "on": "00", "off": "41"}
+	  ]
+	},
+	
+	{
+	  "name": "Practice Music Hack",
+	  "desc": "Plays the level's song in-sync with your position, instead of the standard practice song.",
+	  "opcodes": [
+	    {"addr": "0x2456E", "on": "EB", "off": "75"},
+		{"addr": "0x20C925", "on": "90 90 90 90 90 90", "off": "0F 85 F7 00 00 00"},
+		{"addr": "0x20D143", "on": "90 90", "off": "75 41"},
+		{"addr": "0x20A563", "on": "90 90", "off": "75 3E"},
+		{"addr": "0x20A595", "on": "90 90", "off": "75 0C"}
+	  ]
+	},
+	
+	{
+	  "name": "No Pulse",
+	  "desc": "Disables pulsing on objects.",
+	  "opcodes": [
+	    {"addr": "0x2060D9", "on": "EB 4A", "off": "74 4A"}
+	  ]
+	},
+	
+	{
+	  "name": "Ignore ESC",
+	  "desc": "Stops the ESC key from exiting a level.",
+	  "opcodes": [
+	    {"addr": "0x1E644C", "on": "90 90 90 90 90", "off": "E8 BF 73 02 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Suicide",
+	  "desc": "Kills the player.",
+	  "opcodes": [
+	    {"addr": "0x203DA2", "on": "E9 57 02 00 00 90", "off": "0F 86 56 02 00 00"},
+		{"addr": "0x20401A", "on": "E9 27 02 00 00 90", "off": "0F 87 26 02 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Accurate Percentage",
+	  "desc": "Allows for decimals in the level percentage.",
+	  "opcodes": [
+	    {"addr": "0x208114", "on": "C7 02 25 66 25 25 8B 87 C0 03 00 00 8B B0 04 01 00 00 F3 0F 5A C0 83 EC 08 F2 0F 11 04 24 83 EC 04 89 14 24 90", "off": "F3 0F 2C C0 85 C0 0F 4F C8 B8 64 00 00 00 3B C8 0F 4F C8 8B 87 C0 03 00 00 51 68 30 32 69 00 8B B0 04 01 00 00"},
+		{"addr": "0x20813F", "on": "83 C4 0C", "off": "83 C4 08"}
+	  ]
+	},
+	
+	{
+	  "name": "No Particles",
+	  "desc": "Disables resuming the particle system.",
+	  "opcodes": [
+	    {"addr": "0xB8ED6", "lib": "libcocos2d.dll", "on": "00", "off": "01"}
+	  ]
+	},
+	
+	{
+	  "name": "Instant Complete",
+	  "desc": "Teleports the player to the end of a level, also know as the teleport hack.",
+	  "opcodes": [
+	    {"addr": "0x20350D", "on": "C7 81 7C 06 00 00 20 BC BE 4C 90 90 90 90 90", "off": "8B 35 E0 23 68 00 81 C1 7C 06 00 00 50 FF D6"}
+	  ]
+	}
+  ],
+  
+  "sets": [
+    {
+	  "name": "Wave Pulse Size",
+	  "pointers": [
+	    {"offsets": "0x2E63A0", "type": "float"}
+	  ]
+	},
+	
+    {
+	  "name": "X Pos",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x224;0x67C", "type": "float"}
+	  ]
+	},
+	
+	{
+	  "name": "Y Pos",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x224;0x680", "type": "float"}
+	  ]
+	},
+	
+	{
+	  "name": "Speed",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x224;0x648", "type": "float"}
+	  ]
+	},
+	
+	{
+	  "name": "Size",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x224;0x644", "type": "float"}
+	  ]
+	},
+	
+	{
+	  "name": "Attempts",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x22C;0x114;0x218", "type": "int"},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x214", "type": "int", "reset": true},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x210", "type": "int"}
+	  ]
+	},
+	
+	{
+	  "name": "Jumps",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x22C;0x114;0x224", "type": "int"},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x220", "type": "int", "reset": true},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x21C", "type": "int"}
+	  ]
+	},
+	
+	{
+	  "name": "Normal %",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x22C;0x114;0x248", "type": "int"},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x24C", "type": "int", "reset": true},
+		{"offsets": "0x3222D0;0x164;0x22C;0x114;0x250", "type": "int"}
+	  ]
+	},
+	
+	{
+	  "name": "Practice %",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x22C;0x114;0x26C", "type": "int"}
+	  ]
+	},
+	
+	{
+	  "name": "SongID",
+	  "pointers": [
+	    {"offsets": "0x3222D0;0x164;0x488;0x1C4", "type" : "int"}
+	  ]
+	},
+	
+	{
+	  "name": "Gravity",
+	  "isref": true,
+	  "pointers": [
+	    {"offsets": "0x1E9050", "type": "float"}
+	  ]
+	},
+	
+	{
+	  "name": "Respawn Time",
+	  "isref": true,
+	  "pointers": [
+	    {"offsets": "0x20A677", "type": "float"}
+	  ]
+	}
+  ]
+}

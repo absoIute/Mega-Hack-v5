@@ -1,0 +1,152 @@
+{
+  "hacks": [
+    {
+	  "name": "Song Bypass",
+	  "desc": "Allows the downloading of banned songs.",
+	  "opcodes": [
+	    {"addr": "0x2CDF44", "on": "68 74 74 70 73 3A 2F 2F 6E 65 74 74 69 6B 2E 63 6F 2E 75 6B 2F 5F 2F 73 6F 6E 67 42 79 70 61 73 73 2E 70 68 70 00", "off": "68 74 74 70 3A 2F 2F 77 77 77 2E 62 6F 6F 6D 6C 69 6E 67 73 2E 63 6F 6D 2F 64 61 74 61 62 61 73 65 2F 67 65 74 47 4A 53 6F 6E 67 49 6E 66 6F 2E 70 68 70 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Icons",
+	  "desc": "Unlocks all icons.",
+	  "opcodes": [
+	    {"addr": "0xC50A8", "on": "B0 01 90 90 90", "off": "E8 7A CD 19 00"},
+		{"addr": "0xC54BA", "on": "B0 01 90 90 90", "off": "E8 68 C9 19 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Text Length",
+	  "desc": "Allows for unlimited text length in text inputs.",
+	  "opcodes": [
+	    {"addr": "0x21ACB", "on": "EB 04", "off": "7C 04"}
+	  ]
+	},
+	
+	{
+	  "name": "Character Filter",
+	  "desc": "Lets you input any character in all text inputs.",
+	  "opcodes": [
+	    {"addr": "0x21A99", "on": "90 90", "off": "75 04"}
+	  ]
+	},
+	
+	{
+	  "name": "Slider Limit",
+	  "desc": "Lets sliders be dragged beyond the visible limit.",
+	  "opcodes": [
+	    {"addr": "0x2E5CA", "on": "EB", "off": "76"},
+	    {"addr": "0x2E5F8", "on": "EB", "off": "76"}
+	  ]
+	},
+	
+	{
+	  "name": "Main Levels",
+	  "desc": "Unlocks locked demon levels.",
+	  "opcodes": [
+	    {"addr": "0x188CE1", "on": "E9 8A 00 00 00 90", "off": "0F 8E 89 00 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Guard Vault",
+	  "desc": "Unlocks the guard's vault.",
+	  "opcodes": [
+	    {"addr": "0x1DE1DA", "on": "90 90", "off": "7C 4A"}
+	  ]
+	},
+	
+	{
+	  "name": "Keymaster Vault",
+	  "desc": "Unlocks the keymaster's vault.",
+	  "opcodes": [
+	    {"addr": "0x4F268", "on": "90 90", "off": "74 4A"}
+	  ]
+	},
+	
+	{
+	  "name": "Keymaster Basement",
+	  "desc": "Unlocks the keymaster's basement.",
+	  "opcodes": [
+	    {"addr": "0x221759", "on": "90 90", "off": "74 4A"}
+	  ]
+	},
+	
+	{
+	  "name": "Basement Key Bypass",
+	  "desc": "Lets you unlock the locks in the basement.",
+	  "opcodes": [
+	    {"addr": "0x226E19", "on": "E9 59 01 00 00 90", "off": "0F 85 58 01 00 00"},
+		{"addr": "0x226FB8", "on": "E9 59 01 00 00 90", "off": "0F 85 58 01 00 00"},
+		{"addr": "0x227157", "on": "E9 30 02 00 00 90", "off": "0F 85 2F 02 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Challenge Bypass",
+	  "desc": "Unlocks 'The Challenge' level.",
+	  "opcodes": [
+	    {"addr": "0x2214E0", "on": "90 90 90 90 90 90", "off": "0F 84 87 00 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Treasure Room",
+	  "desc": "Unlocks the treasure room.",
+	  "opcodes": [
+	    {"addr": "0x4F631", "on": "90 90", "off": "74 4A"}
+	  ]
+	},
+	
+	{
+	  "name": "Potbar Shop",
+	  "desc": "Unlocks Potbar's shop in the treasure room.",
+	  "opcodes": [
+	    {"addr": "0x15706B", "on": "90 90 90 90 90 90", "off": "0F 8C B4 01 00 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Scratch Shop",
+	  "desc": "Unlocks Scratch's shop in the treasure room.",
+	  "opcodes": [
+	    {"addr": "0x1562D3", "on": "90 90 90 90 90 90", "off": "0F 8C AF 01 00 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Free Shop Items",
+	  "desc": "Allows all shop items to be bought for 0 mana orbs.",
+	  "opcodes": [
+	    {"addr": "0xF33BB", "on": "8B 93 10 01 00 00", "off": "8B 93 14 01 00 00"},
+		{"addr": "0x14B339", "on": "2B B3 10 01 00 00", "off": "2B B3 14 01 00 00"}
+	  ]
+	},
+	
+	{
+	  "name": "Gatekeeper Vault",
+	  "desc": "Unlocks the Gatekeeper's vault.",
+	  "opcodes": [
+	    {"addr": "0x188836", "on": "90 90", "off": "74 61"}
+	  ]
+	},
+	
+	{
+	  "name": "Backup Stars Limit",
+	  "desc": "Lets you backup data, even with less than 10 stars.",
+	  "opcodes": [
+	    {"addr": "0x3928E", "on": "EB 3E", "off": "7D 3E"}
+	  ]
+	},
+	
+	{
+	  "name": "Unblock Hack",
+	  "desc": "Lets you view profiles of users who have blocked you.",
+	  "opcodes": [
+	    {"addr": "0x29C0E8", "on": "61 48 52 30 63 48 4D 36 4C 79 39 75 5A 58 52 30 61 57 73 75 59 32 38 75 64 57 73 76 58 79 39 31 63 32 56 79 53 57 35 6D 62 79 35 77 61 48 41 3D 00", "off": "61 48 52 30 63 44 6F 76 4C 33 64 33 64 79 35 69 62 32 39 74 62 47 6C 75 5A 33 4D 75 59 32 39 74 4C 32 52 68 64 47 46 69 59 58 4E 6C 4C 32 64 6C 64 45 64 4B 56 58 4E 6C 63 6B 6C 75 5A 6D 38 79 4D 43 35 77 61 48 41 3D 00"}
+	  ]
+	}
+  ]
+}
