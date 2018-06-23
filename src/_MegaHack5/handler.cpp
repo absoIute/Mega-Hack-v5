@@ -16,7 +16,7 @@ bool Handler::AttemptAttach(const char *window, const char *process)
             this->Free(this->alloc_base, this->alloc_size);
         this->procId = 0;
         GetWindowThreadProcessId(this->hWnd, &this->procId);
-        if ((this->hProcess = OpenProcess(PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION | PROCESS_TERMINATE | PROCESS_QUERY_INFORMATION, FALSE, procId)))
+        if ((this->hProcess = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION | PROCESS_TERMINATE | PROCESS_QUERY_INFORMATION, FALSE, procId)))
         {
             this->base = this->GetModuleBase(process);
             this->MemAlloc(0x1000);
