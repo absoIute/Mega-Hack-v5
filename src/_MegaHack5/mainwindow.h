@@ -19,6 +19,12 @@
 #include <QTimer>
 #include <QTreeWidgetItem>
 
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QSslConfiguration>
+#include <QSsl>
+
 #include <algorithm>
 #include <vector>
 
@@ -49,10 +55,14 @@ public:
 
     QByteArray hexstr2bytes(const QString &str);
 
+    QString GetRequest(QUrl url);
+
 private slots:
     void refresh();
 
     void updateValues();
+
+    void checkUpdate();
 
     void on_creatorListWidget_itemChanged(QListWidgetItem *item);
 

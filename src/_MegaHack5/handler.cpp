@@ -33,7 +33,7 @@ bool Handler::Detatch()
 
 uint32_t Handler::GetModuleBase(const char *module) const
 {
-    static int size = 0x1000;
+    static const int size = 0x1000;
     DWORD out;
     HMODULE hmods[size];
     if (EnumProcessModulesEx(this->hProcess, hmods, 0x1000, &out, LIST_MODULES_ALL))
@@ -124,7 +124,7 @@ char *Handler::FilePath(const char *module_name) const
 
 std::vector<std::string> Handler::GetModules() const
 {
-    static int size = 0x1000;
+    static const int size = 0x1000;
     DWORD out;
     HMODULE hmods[size];
     if (EnumProcessModulesEx(this->hProcess, hmods, 0x1000, &out, LIST_MODULES_ALL))

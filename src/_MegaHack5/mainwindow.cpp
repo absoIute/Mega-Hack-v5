@@ -16,6 +16,8 @@
 #define PLAYER_STR "Player"
 #define CREATOR_STR "Creator"
 
+#define VERSION "5.4"
+
 #define OFFSET_SCALE_X	0x28
 #define OFFSET_SCALE_Y	0x2C
 #define OFFSET_X		0x34
@@ -40,13 +42,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->dir = QDir::currentPath().replace('/', '\\');
 
-    QDesktopServices::openUrl(QUrl("https://nettik.co.uk/_/r.php?v"));
+    this->ui->versionLabel->setText("Version: " VERSION);
+
+    QDesktopServices::openUrl(QUrl("https://absolllute.com/api/redirect?mhv5"));
 
     QTimer::singleShot(0, this, SLOT(refresh()));
 
     QTimer *timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateValues()));
     timer->start(100);
+
+    QTimer::singleShot(100, this, SLOT(checkUpdate()));
 }
 
 MainWindow::~MainWindow()
@@ -70,6 +76,53 @@ QJsonDocument MainWindow::GetJsonDoc(QString filename)
 QByteArray MainWindow::hexstr2bytes(const QString& str)
 {
     return QByteArray::fromHex(str.toUtf8());
+}
+
+void MainWindow::checkUpdate()
+{
+    QString r = this->GetRequest(QUrl("https://absolllute.com/api/version?c=mhv5&v=" VERSION));
+
+    QJsonDocument doc = QJsonDocument::fromJson(r.toLocal8Bit());
+    QJsonObject obj = doc.object();
+
+    if (!doc.isObject())
+        return;
+
+    if (obj["update_needed"].toBool())
+    {
+        if (obj["required"].toBool())
+        {
+            QMessageBox::information(this, "Update Found", tr("Version %0 is now available.\n%1\nThis is a required update.").arg(obj["version"].toString(), obj["desc"].toString()));
+            QDesktopServices::openUrl(QUrl(obj["url"].toString()));
+            this->deleteLater();
+        }
+        else
+        {
+            if (QMessageBox::question(this, "Update Found", tr("Version %0 is now available.\n%1\nDo you want to update?").arg(obj["version"].toString(), obj["desc"].toString())) == QMessageBox::Yes)
+                QDesktopServices::openUrl(QUrl(obj["url"].toString()));
+        }
+    }
+}
+
+QString MainWindow::GetRequest(QUrl url)
+{
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+    QNetworkRequest req(url);
+    QSslConfiguration config = QSslConfiguration::defaultConfiguration();
+    config.setProtocol(QSsl::TlsV1_0OrLater);
+    req.setSslConfiguration(config);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+
+    QNetworkReply *reply = manager->get(req);
+
+    QEventLoop loop; //loop to wait for response
+    loop.connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
+    loop.exec();
+
+    QString response = QString::fromLocal8Bit(reply->readAll());
+    manager->deleteLater();
+    return response;
 }
 
 void MainWindow::refresh()
@@ -572,7 +625,7 @@ void MainWindow::on_iconStealerPushButton_clicked()
 {
     static const uint32_t offsets[9] = {0x1AC, 0x1B0, 0x1B4, 0x1B8, 0x1BC, 0x1C0, 0x1C4, 0x148, 0x14C};
 
-    if (this->gmd.GetPointerAddress({0x3222C8, 0x1DC, 0x10, 0x0}, "GeometryDash.exe"))
+    if (this->gmd.GetPointerAddress({0x3222C8, 0x1DC, 0x10, 0x0}, GAME_NAME))
     {
         for (auto i = 0; i < 9; ++i)
         {
@@ -588,7 +641,7 @@ void MainWindow::on_iconStealerPushButton_clicked()
 void MainWindow::on_accountUnlinkerPushButton_clicked()
 {
     if (QMessageBox::Yes == QMessageBox::question(this, "Account Unlinker", "This will log you, but no data will be lost. Continue?"))
-        this->gmd.Write(this->gmd.GetPointerAddress({0x3222D8, 0x120}, "GeometryDash.exe"), 0);
+        this->gmd.Write(this->gmd.GetPointerAddress({0x3222D8, 0x120}, GAME_NAME), 0);
 }
 
 void MainWindow::on_gamemodePushButton_clicked()
@@ -679,7 +732,7 @@ void MainWindow::on_rateLevelPushButton_clicked()
 
     if (ok1 && ok2)
     {
-        uint32_t addr = this->gmd.GetPointerAddress({0x3222D0, 0x164, 0x22C, 0x114, 0}, "GeometryDash.exe");
+        uint32_t addr = this->gmd.GetPointerAddress({0x3222D0, 0x164, 0x22C, 0x114, 0}, GAME_NAME);
         if (!(this->gmd.Write(addr + 0x2A4, stars) && this->gmd.Write(addr + 0x2A8, 0) && this->gmd.Write(addr + 0x1E4, diff)))
             QMessageBox::warning(this, "Error", "Failed to write memory, are you in the level?");
     }
