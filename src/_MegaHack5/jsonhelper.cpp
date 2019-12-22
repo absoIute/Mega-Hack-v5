@@ -47,7 +47,7 @@ namespace JsonHelper
                 oc.on = opcode_obj["on"].toString();
                 oc.off = opcode_obj["off"].toString();
                 oc.tri = opcode_obj["tri"].toString();
-                oc.lib = opcode_obj["lib"].toString("GeometryDash.exe");
+                oc.lib = opcode_obj["lib"].toString("SpaceDash.exe");
 
                 hack.opcodes.push_back(oc);
             }
@@ -79,7 +79,7 @@ namespace JsonHelper
                 QJsonObject ptr_obj = ptr_val.toObject();
 
                 Pointer ptr;
-                ptr.lib = ptr_obj.value("lib").toString("GeometryDash.exe");
+                ptr.lib = ptr_obj.value("lib").toString("SpaceDash.exe");
                 ptr.type = ptr_obj.value("type").toString();
                 ptr.reset = ptr_obj.value("reset").toBool();
                 ptr.value_offset = ptr_obj.value("offset").toString("0").toDouble();
