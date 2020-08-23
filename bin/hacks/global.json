@@ -96,6 +96,54 @@
 	  "opcodes": [
 	    {"addr": "0xA5424", "lib": "libcocos2d.dll", "on": "90 90 90 90 90", "off": "F3 0F 10 45 08"}
 	  ]
+	},
+	
+	{
+	  "name": "Transparent BG",
+	  "desc": "Removes the blue filter from menu's backgrounds. Made by WEGFan",
+	  "opcodes": [
+	    {"addr": "0x15A174", "on": "FF", "off": "00"},
+	    {"addr": "0x15A175", "on": "FF", "off": "66"},
+	    {"addr": "0x15A16F", "on": "FF", "off": "FF"},
+	    {"addr": "0x15A16D", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x15891D", "on": "FF", "off": "00"},
+	    {"addr": "0x15891E", "on": "FF", "off": "66"},
+	    {"addr": "0x158917", "on": "FF", "off": "FF"},
+	    {"addr": "0x158915", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x6F7FB", "on": "FF", "off": "00"},
+	    {"addr": "0x6F7FC", "on": "FF", "off": "66"},
+	    {"addr": "0x6F7F6", "on": "FF", "off": "FF"},
+	    {"addr": "0x6F7F4", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x1979AD", "on": "FF", "off": "00"},
+	    {"addr": "0x1979AE", "on": "FF", "off": "66"},
+	    {"addr": "0x1979A7", "on": "FF", "off": "FF"},
+	    {"addr": "0x1979A5", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x17DBC1", "on": "FF", "off": "00"},
+	    {"addr": "0x17DBC2", "on": "FF", "off": "66"},
+	    {"addr": "0x17DBBB", "on": "FF", "off": "FF"},
+	    {"addr": "0x17DBB9", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x176032", "on": "FF", "off": "00"},
+	    {"addr": "0x176033", "on": "FF", "off": "66"},
+	    {"addr": "0x176036", "on": "FF", "off": "FF"},
+	    {"addr": "0x176034", "on": "90 B1", "off": "80 C9"},
+	    {"addr": "0x4DF7E", "on": "FF", "off": "00"},
+	    {"addr": "0x4DF7F", "on": "FF", "off": "66"},
+	    {"addr": "0x4DF78", "on": "FF", "off": "FF"},
+	    {"addr": "0x4DF76", "on": "90 B1", "off": "80 C9"}
+	  ]
+	},
+	
+	{
+	  "name": "Transparent Lists",
+	  "desc": "Makes the menu lists transparent. Made by WEGFan",
+	  "opcodes": [
+	    {"addr": "0x15C02C", "on": "00 00 00 40", "off": "BF 72 3E FF"},
+	    {"addr": "0x5C70A", "on": "60", "off": "FF"},
+	    {"addr": "0x5C6D9", "on": "20 20", "off": "A1 58"},
+	    {"addr": "0x5C6DC", "on": "20", "off": "2C"},
+	    {"addr": "0x5C6CF", "on": "40 40", "off": "C2 72"},
+	    {"addr": "0x5C6D2", "on": "40", "off": "3E"}
+	  ]
 	}
   ]
 }
