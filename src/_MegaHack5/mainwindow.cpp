@@ -44,15 +44,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->ui->versionLabel->setText("Version: " VERSION);
 
-    QDesktopServices::openUrl(QUrl("https://absolllute.com/api/redirect?mhv5"));
-
     QTimer::singleShot(0, this, SLOT(refresh()));
 
     QTimer *timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateValues()));
     timer->start(100);
-
-    QTimer::singleShot(100, this, SLOT(checkUpdate()));
 }
 
 MainWindow::~MainWindow()
@@ -76,53 +72,6 @@ QJsonDocument MainWindow::GetJsonDoc(QString filename)
 QByteArray MainWindow::hexstr2bytes(const QString& str)
 {
     return QByteArray::fromHex(str.toUtf8());
-}
-
-void MainWindow::checkUpdate()
-{
-    QString r = this->GetRequest(QUrl("https://absolllute.com/api/version?c=mhv5&v=" VERSION));
-
-    QJsonDocument doc = QJsonDocument::fromJson(r.toLocal8Bit());
-    QJsonObject obj = doc.object();
-
-    if (!doc.isObject())
-        return;
-
-    if (obj["update_needed"].toBool())
-    {
-        if (obj["required"].toBool())
-        {
-            QMessageBox::information(this, "Update Found", tr("Version %0 is now available.\n%1\nThis is a required update.").arg(obj["version"].toString(), obj["desc"].toString()));
-            QDesktopServices::openUrl(QUrl(obj["url"].toString()));
-            this->deleteLater();
-        }
-        else
-        {
-            if (QMessageBox::question(this, "Update Found", tr("Version %0 is now available.\n%1\nDo you want to update?").arg(obj["version"].toString(), obj["desc"].toString())) == QMessageBox::Yes)
-                QDesktopServices::openUrl(QUrl(obj["url"].toString()));
-        }
-    }
-}
-
-QString MainWindow::GetRequest(QUrl url)
-{
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-
-    QNetworkRequest req(url);
-    QSslConfiguration config = QSslConfiguration::defaultConfiguration();
-    config.setProtocol(QSsl::TlsV1_0OrLater);
-    req.setSslConfiguration(config);
-    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-
-    QNetworkReply *reply = manager->get(req);
-
-    QEventLoop loop; //loop to wait for response
-    loop.connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
-    loop.exec();
-
-    QString response = QString::fromLocal8Bit(reply->readAll());
-    manager->deleteLater();
-    return response;
 }
 
 void MainWindow::refresh()
@@ -161,7 +110,7 @@ void MainWindow::refresh()
     this->gmd.MemNew("__opacity__", 4);
 
     this->ui->infoTextBrowser->setFontFamily("Courier New");
-    this->ui->infoTextBrowser->setText(tr("Mega Hack v5 By Absolute (for 2.113).\n\nTotal features: %0.\n\n>> ABOUT <<\nPowered by Qt.\nGUI Icons by Yusuke Kamiyamane.\nSHA1 lib: https://github.com/vog/sha1/\nSymbol enumerator: https://github.com/absoIute/Viviz/\n\n>> SPECIAL THANKS <<\nAdafcaefc\nBodya\nCos8o\nItalian Apk Downloader\nmgostIH\nPavlukivan\nSkyvlan\nYoanndp").arg(hacks));
+    this->ui->infoTextBrowser->setText(tr("absoIute's Mega Hack v5 fork by ueberchild (for 2.113).\n\nTotal features: %0.\n\n>> ABOUT <<\nPowered by Qt.\nGUI Icons by Yusuke Kamiyamane.\nSHA1 lib: https://github.com/vog/sha1/\nSymbol enumerator: https://github.com/absoIute/Viviz/\n\n>> SPECIAL THANKS <<\nAdafcaefc\nBodya\nCos8o\nItalian Apk Downloader\nmgostIH\nPavlukivan\nSkyvlan\nYoanndp").arg(hacks));
 }
 
 void MainWindow::SetupSearch()
